@@ -35,7 +35,7 @@ int main() {
         };
         printf("\n");
     };
-    
+
 
     //Pedindo ao usuario a coordenadas dos navios
     printf("\nDigite a coordenada do navio 1: \n");
@@ -49,10 +49,13 @@ int main() {
     printf("Coluna:");
     scanf("%d", &Navio1c);
     
+    //Adicionando os navios
+    //Navio 1 * vertical
     for (int j = 0; j < 3; j++){
         Tabela[Navio0l + j][Navio0c] = 3;
     };
 
+    //Navio 2 * horizontal
     for (int j = 0; j < 3; j++){
         Tabela[Navio1l][Navio1c + j] = 3;
     };
@@ -68,7 +71,7 @@ int main() {
     for (int i = 0; i < 10; i++){
         //Coluna de numeros(margem)
         printf("%d | ", i + 1);
-
+        //Tabela inteira 
         for (int j = 0; j < 10; j++){
             printf(" %d ", Tabela[i][j]);
         };
