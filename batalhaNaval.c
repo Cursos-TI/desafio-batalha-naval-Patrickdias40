@@ -11,6 +11,10 @@ int main() {
     int Navio0c;
     int Navio1l;
     int Navio1c;
+    int NavioD0l;
+    int NavioD0c;
+    int NavioD1l;
+    int NavioD1c;
     
     for (int i = 0; i < 10; i++){
         for (int j = 0; j < 10; j++){
@@ -39,15 +43,40 @@ int main() {
 
     //Pedindo ao usuario a coordenadas dos navios
     printf("\nDigite a coordenada do navio 1: \n");
-    printf("Linha:");
-    scanf("%d", &Navio0l);
-    printf("Coluna:");
-    scanf("%d", &Navio0c);
+    printf("Linha(1 - 10):");
+    scanf(" %d", &Navio0l);// espaço antes do % no scanf ignora tabs e etc    
+    Navio0l--;//Decremento para nao dar erro//Decremento para nao dar erro
+    printf("Coluna:(A - J)");
+    char coluna0c;
+    scanf(" %c", &coluna0c);// espaço antes do % no scanf ignora tabs e etc=
+    Navio0c = coluna0c - 'A';//Transformar em numero as letras
+
     printf("\nDigite a coordenada do navio 2: \n");
-    printf("Linha:");
-    scanf("%d", &Navio1l);
-    printf("Coluna:");
-    scanf("%d", &Navio1c);
+    printf("Linha(1 - 10):");
+    scanf(" %d", &Navio1l);// espaço antes do % no scanf ignora tabs e etc    
+    Navio1l--;//Decremento para nao dar erro
+    printf("Coluna:(A - J)");
+    char coluna1c;
+    scanf(" %c", &coluna1c);// espaço antes do % no scanf ignora tabs e etc
+    Navio1c = coluna1c - 'A';//Transformar em numero as letras
+
+    printf("\nDigite a coordenada do navio na dioagonal 1: \n");
+    printf("Linha(1 - 10):");
+    scanf(" %d", &NavioD0l);// espaço antes do % no scanf ignora tabs e etc
+    NavioD1l--;//Decremento para nao dar erro
+    printf("Coluna:(A - J)");
+    char colunaD0c;
+    scanf(" %c", &colunaD0c);// espaço antes do % no scanf ignora tabs e etc
+    NavioD0c = colunaD0c - 'A';//Transformar em numero as letras
+
+    printf("\nDigite a coordenada do navio na dioagonal 2: \n");
+    printf("Linha(1 - 10):");
+    scanf(" %d", &NavioD1l);// espaço antes do % no scanf ignora tabs e etc
+    NavioD1l--;//Decremento para nao dar erro
+    printf("Coluna:(A - J)");
+    char colunaD1c;
+    scanf(" %c", &colunaD1c);// espaço antes do % no scanf ignora tabs e etc
+    NavioD1c = colunaD1c - 'A';//Transformar em numero as letras
     
     //Adicionando os navios
     //Navio 1 * vertical
@@ -60,14 +89,24 @@ int main() {
         Tabela[Navio1l][Navio1c + j] = 3;
     };
 
+    //Navio 3 * Dioagonal
+    for (int j = 0; j < 3; j++){
+        Tabela[NavioD0l + j][NavioD0c + j] = 3;
+    };
+
+    //Navio 4 * Dioagonal
+    for (int j = 0; j < 3; j++){
+        Tabela[NavioD1l - j][NavioD1c - j] = 3;
+    };
+
     //Coluna alfabetica(margem)
     printf("    ");
     for (int i = 0; i < 10; i++){
         printf(" %c ", 'A' + i);
     }
-
+    //Espaço somente
     printf("\n");
-    
+    //Tabela
     for (int i = 0; i < 10; i++){
         //Coluna de numeros(margem)
         printf("%d | ", i + 1);
@@ -77,11 +116,6 @@ int main() {
         };
         printf("\n");
     };
-
-    // Nível Aventureiro - Expansão do Tabuleiro e Posicionamento Diagonal
-    // Sugestão: Expanda o tabuleiro para uma matriz 10x10.
-    // Sugestão: Posicione quatro navios no tabuleiro, incluindo dois na diagonal.
-    // Sugestão: Exiba o tabuleiro completo no console, mostrando 0 para posições vazias e 3 para posições ocupadas.
 
     // Nível Mestre - Habilidades Especiais com Matrizes
     // Sugestão: Crie matrizes para representar habilidades especiais como cone, cruz, e octaedro.
